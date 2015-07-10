@@ -3,5 +3,6 @@ platforms/
 plugins/
 resources/
 www/lib
+www/css/*
 
 /.idea/
