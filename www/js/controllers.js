@@ -21,24 +21,28 @@ angular.module('starter.controllers', [])
         $scope.chat = Chats.get($stateParams.chatId);
     })
 
-    .controller('SettingsCtrl', function($scope) {
-        $scope.settings = {
-            enableFriends: true
+    .controller('SettingsCtrl', function($scope, $localStorage) {
+        $scope.options = {
+            hours: _.range(0, 24),
+            days: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
         };
 
-        $scope.settings = {
-            hours: {
-                start: 10,
-                end: 18,
-                options: _.range(0, 24)
-            },
-            days: {
-                monday: true,
-                tuesday: true,
-                wednesday: true,
-                thursday: true,
-                friday: true,
-                options: ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-            }
+        $scope.$storage = $localStorage;
+
+        if (! $scope.$storage.initialized) {
+            $scope.$storage.settings = {
+                hours: {
+                    start: 10,
+                    end: 18
+                },
+                days: {
+                    monday: true,
+                    tuesday: true,
+                    wednesday: true,
+                    thursday: true,
+                    friday: true
+                }
+            };
+            $scope.$storage.initialized = true;
         }
     });
