@@ -1,5 +1,5 @@
-<ion-view view-title="Today">
-  <ion-content class="padding">
+<ion-view view-title="Today" ng-switch="isDayOff()">
+  <ion-content class="padding" ng-switch-when="false">
     <div class="list card">
       <div class="item item-divider">Recent Updates</div>
       <div class="item item-body">
@@ -25,4 +25,11 @@
       </div>
     </div>
   </ion-content>
+
+  <ion-content id="nothing-to-do" ng-switch-when="true">
+    <div  class="col col-center">
+        Nothing to do today!
+    </div>
+  </ion-content>
+
 </ion-view>
