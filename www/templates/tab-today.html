@@ -1,35 +1,45 @@
-<ion-view view-title="Today" ng-switch="isDayOff()">
-  <ion-content class="padding" ng-switch-when="false">
-    <div class="list card">
-      <div class="item item-divider">Recent Updates</div>
-      <div class="item item-body">
-        <div>
-          There is a fire in <b>sector 3</b>
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Health</div>
-      <div class="item item-body">
-        <div>
-          You ate an apple today!
-        </div>
-      </div>
-    </div>
-    <div class="list card">
-      <div class="item item-divider">Upcoming</div>
-      <div class="item item-body">
-        <div>
-          You have <b>29</b> meetings on your calendar tomorrow.
-        </div>
-      </div>
-    </div>
-  </ion-content>
+<ion-view view-title="Today" ng-switch="isDayOff" cache-view="false">
+    <ion-content class="padding" ng-switch-when="false">
 
-  <ion-content id="nothing-to-do" ng-switch-when="true">
-    <div  class="col col-center">
-        Nothing to do today!
-    </div>
-  </ion-content>
+        <ion-list>
+            <ion-toggle ng-model="showAll">
+                Show all
+            </ion-toggle>
+        </ion-list>
+
+        <ion-list type="card"ng-model="showAll" ng-repeat="record in records" ng-if="showAll || !record.completed">
+            <div class="item item-divider row">
+                <div class="col">
+                    {{ record.hour | hour }} - {{ record.hour + 1 | hour }}
+                </div>
+                <button class="button complete button-small" ng-class="{'button-balanced': record.completed}" ng-click="toggleComplete(record.hour)">
+                    <i class="icon ion-checkmark"></i>
+                </button>
+
+            </div>
+            <div class="item item-body">
+                <input type="text" ng-model="record.notes" placeholder="Notes">
+            </div>
+            <div class="row">
+                <button ng-repeat="tag in record.tags" class="button button-small">
+                    {{ tag }}
+                </button>
+
+                <button class="button button-small">
+                    <i class="icon ion-plus"></i>
+                </button>
+            </div>
+
+            <div class="row">
+            </div>
+        </div>
+
+    </ion-list>
+
+    <ion-content id="nothing-to-do" ng-switch-when="true">
+        <div  class="col col-center">
+            Nothing to do today!
+        </div>
+    </ion-content>
 
 </ion-view>
