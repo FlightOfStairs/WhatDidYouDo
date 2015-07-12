@@ -1,0 +1,26 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-divider">Work hours</ion-item>
+      <ion-item class="item-select">
+        <div class="input-label">
+          Start of day
+        </div>
+        <select ng-model="settings.hours.start" ng-options="(h | hour) for h in settings.hours.options"></select>
+      </ion-item>
+      <ion-item class="item-select">
+        <div class="input-label">
+          End of day
+        </div>
+        <select ng-model="settings.hours.end" ng-options="(h | hour) for h in settings.hours.options"></select>
+      </ion-item>
+
+
+      <ion-item class="item-divider">Work days</ion-item>
+
+      <ion-toggle ng-repeat="day in settings.days.options" ng-model="settings.days[day]">
+        {{day | capitalize}}
+      </ion-toggle>
+    </ion-list>
+  </ion-content>
+</ion-view>
