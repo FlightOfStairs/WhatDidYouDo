@@ -5,21 +5,4 @@ angular.module('SettingsCtrl', []).controller('SettingsCtrl', function($scope, $
     };
 
     $scope.$storage = $localStorage;
-
-    if (! $scope.$storage.initialized) {
-        $scope.$storage.settings = {
-            hours: {
-                start: 10,
-                end: 18
-            },
-            days: {
-                monday: true,
-                tuesday: true,
-                wednesday: true,
-                thursday: true,
-                friday: true
-            }
-        };
-        $scope.$storage.initialized = true;
-    }
 });
