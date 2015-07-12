@@ -1,11 +1,14 @@
 angular.module('setup', []).run(["$localStorage", function($localStorage) {
-    if (! $localStorage.initialized) {
+    if (!$localStorage.log) {
         $localStorage.log = {};
+    }
 
+    if (! $localStorage.settings) {
         $localStorage.settings = {
             hours: {
                 start: 10,
-                end: 18
+                end: 18,
+                format: "24"
             },
             days: {
                 monday: true,
@@ -15,6 +18,5 @@ angular.module('setup', []).run(["$localStorage", function($localStorage) {
                 friday: true
             }
         };
-        $localStorage.initialized = true;
     }
 }]);

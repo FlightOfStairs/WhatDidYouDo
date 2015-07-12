@@ -1,6 +1,10 @@
 <ion-view view-title="Settings">
   <ion-content>
     <ion-list>
+      <ion-item class="item-divider">Time format</ion-item>
+      <ion-radio ng-model="$storage.settings.hours.format" ng-value="12">12-hour</ion-radio>
+      <ion-radio ng-model="$storage.settings.hours.format" ng-value="24">24-hour</ion-radio>
+
       <ion-item class="item-divider">Work hours</ion-item>
       <ion-item class="item-select">
         <div class="input-label">
